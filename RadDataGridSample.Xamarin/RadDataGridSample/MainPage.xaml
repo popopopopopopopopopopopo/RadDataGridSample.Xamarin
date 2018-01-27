@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:RadDataGridSample"
+             xmlns:telerikDataGrid="clr-namespace:Telerik.XamarinForms.DataGrid;assembly=Telerik.XamarinForms.DataGrid"
+             x:Class="RadDataGridSample.MainPage"
+             BindingContext="{x:Static local:MainPageViewModel.Instance}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageSourceConverter x:Key="ImageSourceConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>
+        <Label Text="Welcome to Xamarin.Forms! moge!"
+                HorizontalOptions="CenterAndExpand" />
+        <Entry Text="{Binding InputMessage}"></Entry>
+        <Button Text="送信" Command="{Binding HelloCommand}"></Button>
+        <Label Text="{Binding Message}" HorizontalOptions="CenterAndExpand" />
+        <Label Text="{Binding CallBackMessage}" HorizontalOptions="CenterAndExpand" />
+        <Image Source="{Binding LogoUrl, Converter={StaticResource ImageSourceConverter}}" />
+        <telerikDataGrid:RadDataGrid x:Name="DataGrid" ItemsSource="{Binding Persons,Mode=TwoWay}" AutoGenerateColumns="True"/>
+    </StackLayout>
+</ContentPage>
